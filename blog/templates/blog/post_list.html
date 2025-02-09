@@ -7,7 +7,7 @@
         <header>
             <h1><a href="/">Menu Pages</a></h1>
         </header>
-        {{ posts }}
+
         <article>
             <time>founded: 14.02.2025, 12:14</time>
             <h2><a href="">Item 1</a></h2>
@@ -18,7 +18,12 @@
 
 
         {% for post in posts %}
-            {{ post }}
+        <article>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <time>published: {{ post.published_date }}</time>
+            <p>{{ post.text | linebreaksbr }}</p>
+        </article>
+
         {% endfor %}
     </body>
 </html>
