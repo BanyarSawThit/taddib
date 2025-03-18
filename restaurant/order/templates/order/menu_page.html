@@ -32,10 +32,29 @@
         {% endfor %}
 
     </div>
-    <div class="cart-summary">
-        <a href="{% url 'cart_summary' %}" class="cart-button" >
-            <p>Qty[#], Confirm [$20.00]</p>
-        </a>
+{#    <div class="cart-summary">#}
+{#        <a href="{% url 'cart_summary' %}" class="cart-button" >#}
+{#            <p>Qty[#], Confirm [$20.00]</p>#}
+{#        </a>#}
+{#    </div>#}
+
+    <!-- Sticky Cart Summary at the Bottom-Left -->
+    <div class="sticky-cart">
+        <div class="sticky-cart-content">
+            <!-- Quantity and Total (upper part) -->
+            <span class="sticky-cart-text">
+{#                Quantity: {{ cart_quantity }}#}
+{#                <i>S$ {{ cart_total }}</i>#}
+                Cart
+            </span>
+            <hr class="cart-divider">
+            <!-- Go to Cart Link (at the bottom) -->
+            <a href="{% url 'cart_summary' %}">
+                    <span class="sticky-cart-action">
+                        Confirm Order
+                    </span>
+            </a>
+        </div>
     </div>
 
 

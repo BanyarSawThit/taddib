@@ -4,9 +4,11 @@ from django.utils import timezone
 from .models import Table, Category, Item,  Customization, UserOrder, OrderItem
 from .forms import CustomizationForm
 from django.contrib import messages
-def table_select(request):
-    vtables = Table.objects.all()
-    return render(request, 'order/table_selection.html', {'tables': vtables})
+
+# Render the table selection page
+def table_view(request):
+    tables = Table.objects.all()
+    return render(request, 'order/table_selection.html', {'tables': tables})
 def menu_page(request, table_id):
 
 

@@ -255,29 +255,55 @@ h3 {
 }
 /*popup style end*/
 
-/*sticky cart button*/
-.cart-summary {
+/* Sticky Cart at the Bottom-Left */
+.sticky-cart {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;  /* Ensures it spans across */
-    width: 100%;
-    background-color: #fff;
-    padding: 10px 15px; /* Adds horizontal padding */
-    text-align: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center; /* Centers the button */
+    right: 0;
+    bottom: 20px; /* 20px from the bottom */
+    width: 250px; /* Control the width of the cart */
+    background: #b04f07;
+    padding: 15px 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    z-index: 1000;
+    border-radius: 10px 0 0 10px;
 }
 
-.cart-button {
-    display: block;
-    text-decoration: none;
-    background-color: #f19c2d;
+/* Sticky cart content */
+.sticky-cart-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+}
+
+/* Sticky cart text (quantity and total) */
+.sticky-cart-text {
     color: white;
-    padding: 15px 30px; /* Adjusted padding */
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.sticky-cart-text i {
+    padding-left: 80px; /* Adds padding to the left of the total price */
+}
+
+.cart-divider {
+    border: 0; /* Remove default border */
+    border-top: 1px solid #ddd; /* Light gray border to create the line */
+    width: 100%; /* Make sure the line spans the full width */
+}
+
+/* Sticky cart action (Go to Cart link) */
+.sticky-cart-action {
+    font-size: 20px;
     font-weight: bold;
-    border-radius: 5px;
-    white-space: nowrap; /* Prevents text wrapping */
+    margin-top: 10px;
+    color: white;
+}
+
+/* Optional: Hover effect on the "Go to Cart" link */
+.sticky-cart-action:hover {
+    color: #000000;
 }

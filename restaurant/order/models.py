@@ -1,15 +1,30 @@
-from distutils.sysconfig import customize_compiler
-
 from django.db import models
 
-# Create your models here.
-# Each table in the restaurant
+import qrcode
+from django.db import models
+from django.core.files.base import ContentFile
+from io import BytesIO
+
+# Table Model
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
-    is_available = models.BooleanField(default=True)
+    availability = models.BooleanField(default=True)
+    qr_code = models.ImageField(upload_to='qrcodes/', blank=True, null=True)  # QR code for menu access
+
+    def generate_qr_code(self):
+        qr = qrcode.make(f"http://localhost:8000/order/{self.table_number}/menu/")
+        buffer = BytesIO()
+        qr.save(buffer, format="PNG")
+        self.qr_code.save(f'table_{self.table_number}.png', ContentFile(buffer.getvalue()), save=False)
+
+    def save(self, *args, **kwargs):
+        if not self.qr_code:
+            self.generate_qr_code()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Table {self.table_number}"
+
 
 # Salad, Dishes, Soup, Desserts, Drinks
 class Category(models.Model):
